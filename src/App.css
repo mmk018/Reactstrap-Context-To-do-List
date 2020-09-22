@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
@@ -22,6 +23,20 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.list-group{
+  width: 400px;
+}
+.list-group-item:hover{
+  transform: scaleX(1.1);
+  /* transform: translate(50px); */
+  transition: ease-in;
+  border: 1px solid black;
+}
+.card{
+  position: absolute;
+  display: fixed !important;
 }
 
 .App-link {

@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState, useEffect} from 'react';
+import MyContext from './Components/Context/Context';
+import data from './data.json';
 import './App.css';
+import NoteView from'./Components/NoteView';
+import NoteList from './Components/NoteList';
+
+import ModalExample from './Components/ModalExample';
+
+
 
 function App() {
+  
+  const [list, setList] = useState(data);
+  const [choosed, setChoosed] = useState({});
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+
+  useEffect(() => {
+    console.log(choosed);
+    
+    
+  }, [choosed])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <MyContext.Provider value={{list,setList,choosed, setChoosed,modal,setModal,toggle}}>
+        <NoteList></NoteList>
+        <NoteView></NoteView>
+       
+        <ModalExample></ModalExample>
+        
+     </MyContext.Provider>
     </div>
   );
 }
